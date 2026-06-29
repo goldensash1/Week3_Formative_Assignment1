@@ -1,0 +1,9 @@
+[Monitor Service] Started. PID = 18
+[Monitor Service] Send signals with: kill -SIGUSR1 18
+[Monitor Service] System running normally...
+
+[Monitor Service] System status requested by administrator.
+[Monitor Service] STATUS: uptime OK, all checks passed.
+
+[Monitor Service] Emergency shutdown signal received.
+[Monitor Service] Performing emergency shutdown now.

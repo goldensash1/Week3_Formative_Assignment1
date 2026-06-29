@@ -1,0 +1,14 @@
+[Monitor Service] Started. PID = 14
+[Monitor Service] Send signals with: kill -SIGUSR1 14
+[Monitor Service] System running normally...
+
+[Monitor Service] System status requested by administrator.
+[Monitor Service] STATUS: uptime OK, all checks passed.
+[Monitor Service] System running normally...
+
+[Monitor Service] System status requested by administrator.
+[Monitor Service] STATUS: uptime OK, all checks passed.
+[Monitor Service] System running normally...
+
+[Monitor Service] Monitor Service shutting down safely.
+[Monitor Service] Cleanup complete. Goodbye.

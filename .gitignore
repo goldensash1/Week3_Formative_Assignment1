@@ -1,0 +1,19 @@
+# Compiled binaries (reproducible from source via the scripts / Dockerfile)
+project1_suspicious_binary/data_sync
+project2_syscall_monitor/backup_tool
+project4_signal_service/monitor_service
+
+# Python C-extension build artefacts
+project3_python_extension/build/
+project3_python_extension/*.so
+
+# Runtime artefacts produced by backup_tool when traced
+project2_syscall_monitor/backup_data.txt
+project2_syscall_monitor/backup.log
+project*/**/backup_data.txt
+project*/**/backup.log
+
+# OS noise
+.DS_Store
+__pycache__/
+*.pyc

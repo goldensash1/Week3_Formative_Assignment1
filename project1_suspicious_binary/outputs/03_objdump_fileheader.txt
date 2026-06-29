@@ -1,0 +1,6 @@
+
+data_sync:     file format elf64-littleaarch64
+architecture: aarch64, flags 0x00000150:
+HAS_SYMS, DYNAMIC, D_PAGED
+start address 0x0000000000000cc0
+

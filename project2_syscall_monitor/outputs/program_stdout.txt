@@ -1,0 +1,8 @@
+----- recovered backup contents -----
+BACKUP RECORD
+=============
+server: web-01
+status: OK
+files : 3
+
+[backup_tool] wrote 64 bytes, read back 64 bytes
