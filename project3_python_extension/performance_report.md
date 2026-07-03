@@ -1,4 +1,4 @@
-# Project 3 — Building a Python Performance Extension
+# Project 3 - Building a Python Performance Extension
 
 **Goal:** a data-analysis program computing statistics over large arrays is too
 slow in pure Python. Re-implement the hot loop as a **CPython C extension** and
@@ -11,13 +11,13 @@ of an array of `N = 5,000,000` pseudo-random floats, using a two-pass algorithm.
 
 ## 1. The two implementations
 
-Both use the *same* two-pass algorithm so the comparison is fair — the only
+Both use the *same* two-pass algorithm so the comparison is fair - the only
 difference is *interpreted Python loop* vs *compiled C loop*.
 
-* **Pure Python** — [`stats_pure.py`](stats_pure.py): explicit `for` loops over
+* **Pure Python** - [`stats_pure.py`](stats_pure.py): explicit `for` loops over
   the list (deliberately **not** `numpy`/`statistics`, to isolate the cost of
   the Python interpreter itself).
-* **C extension** — [`statsext.c`](statsext.c): uses the CPython C-API
+* **C extension** - [`statsext.c`](statsext.c): uses the CPython C-API
   (`PyArg_ParseTuple`, `PySequence_Fast`, `PyFloat_AsDouble`, `Py_BuildValue`)
   to run the same arithmetic in native C, exposed as `statsext.compute_stats()`.
 
@@ -58,7 +58,7 @@ Max abs difference between results: 0.000e+00
 | **C extension** | **0.0239 s** | **≈ 8.1× faster** |
 
 **Correctness:** the maximum absolute difference between the two results is
-`0.000e+00` — the C extension returns **bit-identical** values to the pure
+`0.000e+00` - the C extension returns **bit-identical** values to the pure
 Python version, so the speed-up does not cost any accuracy.
 
 ---
@@ -68,12 +68,12 @@ Python version, so the speed-up does not cost any accuracy.
 Each iteration of the **pure-Python** loop pays for a lot of interpreter
 machinery that has nothing to do with the arithmetic:
 
-1. **Byte-code dispatch** — the CPython evaluation loop decodes and dispatches
+1. **Byte-code dispatch** - the CPython evaluation loop decodes and dispatches
    an opcode for every step (`FOR_ITER`, `LOAD_FAST`, `BINARY_OP`, …).
-2. **Boxed objects** — every number is a heap-allocated `PyObject` (`float`).
+2. **Boxed objects** - every number is a heap-allocated `PyObject` (`float`).
    `total += x` must unbox two `float` objects, add them, and **allocate a new
    `float`** for the result.
-3. **Reference counting** — each temporary object's refcount is incremented and
+3. **Reference counting** - each temporary object's refcount is incremented and
    decremented.
 
 The **C extension** removes all of that from the inner loop: it converts each
@@ -86,12 +86,12 @@ multiplications in raw machine registers, with the compiler free to optimise
 This is an honest and important point. The C loop still calls
 `PyFloat_AsDouble()` **once per element** to pull each value out of the Python
 list, and that call still touches a Python object. So a meaningful share of the
-work — iterating a *Python list of Python floats* — is irreducible while the
+work - iterating a *Python list of Python floats* - is irreducible while the
 data lives as Python objects. The speed-up therefore reflects eliminating the
 **interpreter and arithmetic overhead**, not the cost of accessing Python
 objects. To go dramatically faster you would store the data in a contiguous C
 buffer (e.g. a `numpy` array or the buffer protocol) so the C code never touches
-individual `PyObject`s — that is exactly why libraries like NumPy exist. For an
+individual `PyObject`s - that is exactly why libraries like NumPy exist. For an
 array of *plain Python floats*, ~8× is the expected, realistic gain.
 
 ---

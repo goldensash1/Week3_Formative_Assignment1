@@ -1,8 +1,8 @@
-# Week 3 — Formative Assignment 1 (Linux Programming)
+# Week 3 - Formative Assignment 1 (Linux Programming)
 
 Four small systems-programming projects exploring how Linux programs are
 structured, how they talk to the kernel, how to accelerate them, and how they
-react to signals. **Every command output committed here is real** — regenerated
+react to signals. **Every command output committed here is real** - regenerated
 inside a pinned Ubuntu 24.04 Linux toolchain (see *Reproducing* below).
 
 | # | Project | Tools / APIs | Key result |
@@ -26,7 +26,7 @@ Week3_Formative_Assignment1/
 │
 ├── project1_suspicious_binary/
 │   ├── data_sync.c               <- source of the "suspicious" binary
-│   ├── forensic_report.md        <- 1–2 page forensic analysis
+│   ├── forensic_report.md        <- 1-2 page forensic analysis
 │   └── outputs/                  <- file/readelf/objdump/nm outputs
 │
 ├── project2_syscall_monitor/
@@ -74,11 +74,11 @@ On a native Linux machine you can skip Docker and run the scripts directly
 
 **Toolchain used for the committed outputs:** Ubuntu 24.04, GCC 13.3.0,
 GNU binutils 2.42, strace 6.8, Python 3.12.3, architecture `aarch64`
-(64-bit ARM Linux — the analysis techniques are identical on x86-64).
+(64-bit ARM Linux - the analysis techniques are identical on x86-64).
 
 ---
 
-## Project 1 — Investigating a Suspicious Binary
+## Project 1 - Investigating a Suspicious Binary
 
 `data_sync.c` is compiled into an ELF executable that is then analysed
 **without running it**. Static inspection answers:
@@ -98,7 +98,7 @@ shell or crypto imports → benign. Full write-up:
 
 ---
 
-## Project 2 — System Call Monitoring Tool
+## Project 2 - System Call Monitoring Tool
 
 `backup_tool.c` creates a backup file, writes logs, and reads the file back,
 then is traced with `strace`. The report classifies every syscall into
@@ -110,7 +110,7 @@ Full write-up + table:
 
 ---
 
-## Project 3 — Building a Python Performance Extension
+## Project 3 - Building a Python Performance Extension
 
 A pure-Python mean/variance/stddev routine is re-implemented as a CPython C
 extension (`statsext`). On 5,000,000 floats the C version is **≈ 8.1× faster**
@@ -122,7 +122,7 @@ write-up:
 
 ---
 
-## Project 4 — Signal-Based Server Controller
+## Project 4 - Signal-Based Server Controller
 
 `monitor_service.c` runs continuously, prints a heartbeat every 5 s, and handles
 three signals via `sigaction(2)` using async-signal-safe handlers:
@@ -138,4 +138,4 @@ Two captured demonstration runs prove each path. Full write-up:
 
 ---
 
-*Author: S. Munyankindi · ALU — Linux Programming · Week 3 Formative 1*
+*Author: S. Munyankindi · ALU - Linux Programming · Week 3 Formative 1*

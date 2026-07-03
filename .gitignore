@@ -17,3 +17,6 @@ project*/**/backup.log
 .DS_Store
 __pycache__/
 *.pyc
+
+# Final submission report (kept local for LMS upload, not pushed to GitHub)
+report/

@@ -1,4 +1,4 @@
-# Project 4 — Signal-Based Server Controller (`monitor_service`)
+# Project 4 - Signal-Based Server Controller (`monitor_service`)
 
 **Goal:** a long-running background service that prints a heartbeat every 5
 seconds and responds to administrative commands delivered as Unix signals.
@@ -69,7 +69,7 @@ standard, race-free "set a flag in the handler, act in the main loop" pattern.
 
 ## 4. Demonstration (captured terminal logs)
 
-### Demonstration 1 — two SIGUSR1 status requests, then SIGINT (graceful)
+### Demonstration 1 - two SIGUSR1 status requests, then SIGINT (graceful)
 
 Commands sent: `kill -SIGUSR1`, `kill -SIGUSR1`, `kill -SIGINT`.
 Captured in `outputs/demo_sigint.txt`:
@@ -93,7 +93,7 @@ Captured in `outputs/demo_sigint.txt`:
 → The service kept running after each SIGUSR1 and only stopped on SIGINT,
 exiting cleanly (**exit code 0**).
 
-### Demonstration 2 — SIGUSR1, then SIGTERM (emergency)
+### Demonstration 2 - SIGUSR1, then SIGTERM (emergency)
 
 Commands sent: `kill -SIGUSR1`, `kill -SIGTERM`.
 Captured in `outputs/demo_sigterm.txt`:
@@ -118,8 +118,8 @@ Captured in `outputs/demo_sigterm.txt`:
 The service demonstrates the full life-cycle of OS signal handling: registering
 handlers with `sigaction`, doing only async-signal-safe work inside them,
 communicating with the main loop through `volatile sig_atomic_t` flags, and
-distinguishing three administrative commands — **status (SIGUSR1)**, **graceful
-shutdown (SIGINT)**, and **emergency shutdown (SIGTERM)** — each producing the
+distinguishing three administrative commands - **status (SIGUSR1)**, **graceful
+shutdown (SIGINT)**, and **emergency shutdown (SIGTERM)** - each producing the
 exact required message and the correct continue-or-exit behaviour.
 
 *Raw demonstration logs are in `project4_signal_service/outputs/`.*
