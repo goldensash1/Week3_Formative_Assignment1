@@ -137,5 +137,3 @@ Two captured demonstration runs prove each path. Full write-up:
 [`project4_signal_service/signal_report.md`](project4_signal_service/signal_report.md).
 
 ---
-
-*Author: S. Munyankindi · ALU - Linux Programming · Week 3 Formative 1*
